@@ -5,7 +5,8 @@ import Image from "next/image";
 import styles from "./style.module.css";
 import { MovieI } from "@/types";
 
-export default function MoviesSection({ title, movies }: { title: string; movies: MovieI[] }) {
+export default function MoviesSection({ title, movies }: { title: string | undefined; movies: MovieI[] }) {
+
     return (
         <div className={styles.moviesSection}>
             <h3 className={styles.title}>{title}</h3>
