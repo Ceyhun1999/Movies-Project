@@ -2,10 +2,10 @@ import React from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { FaPlus } from "react-icons/fa";
+import styles from "./styles.module.css";
+import { MovieI } from "@/types";
 
-import styles from "./featuredMovie.module.css";
-
-export default function FeaturedMovie({ movie = {}, isCompact = true }) {
+export default function FeaturedMovie({ movie = {}, isCompact = true }: { movie: MovieI; isCompact: boolean }) {
     const { poster_path, title, overview } = movie;
 
     return (
@@ -22,7 +22,12 @@ export default function FeaturedMovie({ movie = {}, isCompact = true }) {
             </div>
             <div className={styles.moviePoster}>
                 <div className={styles.moviePosterOverlay}></div>
-                <Image unoptimized src={`https://image.tmdb.org/t/p/original${poster_path}`} alt={title} fill />
+                <Image
+                    unoptimized
+                    src={`https://image.tmdb.org/t/p/original${poster_path}`}
+                    alt={title ? title : ""}
+                    fill
+                />
             </div>
         </div>
     );
